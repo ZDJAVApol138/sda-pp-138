@@ -138,4 +138,19 @@ public class Customer {
         return Objects.hash(id, age, name, surname, phone, email,
                 pesel, address, dateOfBirth);
     }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "id=" + id +
+                ", age=" + age +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", phone='" + phone + '\'' +
+                ", email='" + email + '\'' +
+                ", pesel='" + pesel + '\'' +
+                ", address=" + address +
+                ", dateOfBirth=" + dateOfBirth +
+                '}';
+    }
 }
