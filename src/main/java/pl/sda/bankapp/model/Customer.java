@@ -2,6 +2,8 @@ package pl.sda.bankapp.model;
 
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Customer {
@@ -15,6 +17,7 @@ public class Customer {
     private String pesel;
     private Address address;
     private LocalDate dateOfBirth;
+    private final List<Account> accounts = new ArrayList<>();
 
     public Customer() {
     }
@@ -44,6 +47,23 @@ public class Customer {
 //        }
 //        return years;
 //    }
+
+    public boolean addAccount(Account account) {
+        return accounts.add(account);
+    }
+
+    public boolean removeAccount(Account account) {
+        return accounts.remove(account);
+    }
+
+    public void listAccounts() {
+//        accounts.forEach(account -> System.out.println(account));
+//        for (Account account : accounts) {
+//            System.out.println(account);
+//        }
+
+        accounts.forEach(System.out::println);
+    }
 
     public long getId() {
         return id;
