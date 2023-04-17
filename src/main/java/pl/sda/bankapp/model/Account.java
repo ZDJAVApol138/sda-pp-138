@@ -2,6 +2,7 @@ package pl.sda.bankapp.model;
 
 import pl.sda.bankapp.enums.AccountType;
 import pl.sda.bankapp.enums.Currency;
+import pl.sda.bankapp.utils.AccountNumberGenerator;
 
 import java.math.BigDecimal;
 import java.util.Objects;
@@ -10,24 +11,18 @@ public abstract class Account {
 
     private long id;
     private long customerId;
-    private String accountNumber;
     private Currency currency;
     private AccountType accountType;
-    private BigDecimal currentAmount;
+    private BigDecimal currentAmount = BigDecimal.ZERO;
+    private final String accountNumber = AccountNumberGenerator.generate();
 
     public Account() {
-        this.currentAmount = BigDecimal.ZERO;
     }
 
-    public Account(long id, long customerId, String accountNumber,
-                   Currency currency, BigDecimal currentAmount,
-                   AccountType accountType) {
-
+    public Account(long id, long customerId, Currency currency, AccountType accountType) {
         this.id = id;
         this.customerId = customerId;
-        this.accountNumber = accountNumber;
         this.currency = currency;
-        this.currentAmount = currentAmount;
         this.accountType = accountType;
     }
 
@@ -61,10 +56,6 @@ public abstract class Account {
 
     public String getAccountNumber() {
         return accountNumber;
-    }
-
-    public void setAccountNumber(String accountNumber) {
-        this.accountNumber = accountNumber;
     }
 
     public Currency getCurrency() {
