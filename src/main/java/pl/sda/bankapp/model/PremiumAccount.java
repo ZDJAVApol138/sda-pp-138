@@ -9,13 +9,8 @@ public class PremiumAccount extends Account {
 
     private static final int MONTHLY_FEE = 10;
 
-    public PremiumAccount(long id,
-                          long customerId,
-                          String accountNumber,
-                          Currency currency,
-                          BigDecimal currentAmount) {
-
-        super(id, customerId, accountNumber, currency, currentAmount, AccountType.PREMIUM);
+    public PremiumAccount(long id, long customerId, Currency currency) {
+        super(id, customerId, currency, AccountType.PREMIUM);
     }
 
     @Override

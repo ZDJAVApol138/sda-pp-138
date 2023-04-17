@@ -11,15 +11,9 @@ public class SavingAccount extends Account {
 
     private BigDecimal interestRate;
 
-    public SavingAccount(long id,
-                         long customerId,
-                         String accountNumber,
-                         Currency currency,
-                         BigDecimal currentAmount) {
-
-        super(id, customerId, accountNumber, currency, currentAmount, AccountType.SAVING);
+    public SavingAccount(long id, long customerId, Currency currency) {
+        super(id, customerId, currency, AccountType.SAVING);
     }
-
 
     @Override
     public void chargeAccount() {
