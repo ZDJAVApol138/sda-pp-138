@@ -7,6 +7,8 @@ import java.math.BigDecimal;
 
 public class PremiumAccount extends Account {
 
+    private static final int MONTHLY_FEE = 10;
+
     public PremiumAccount(long id,
                           long customerId,
                           String accountNumber,
@@ -14,5 +16,10 @@ public class PremiumAccount extends Account {
                           BigDecimal currentAmount) {
 
         super(id, customerId, accountNumber, currency, currentAmount, AccountType.PREMIUM);
+    }
+
+    @Override
+    public void chargeAccount() {
+        setCurrentAmount(getCurrentAmount().subtract(BigDecimal.valueOf(MONTHLY_FEE)));
     }
 }
