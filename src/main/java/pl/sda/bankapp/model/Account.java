@@ -6,7 +6,7 @@ import pl.sda.bankapp.enums.Currency;
 import java.math.BigDecimal;
 import java.util.Objects;
 
-public class Account {
+public abstract class Account {
 
     private long id;
     private long customerId;
@@ -29,6 +29,18 @@ public class Account {
         this.currency = currency;
         this.currentAmount = currentAmount;
         this.accountType = accountType;
+    }
+
+    public abstract void chargeAccount();
+
+    public void deposit(BigDecimal depositAmount) {
+        currentAmount = currentAmount.add(depositAmount);
+    }
+
+    public void withdraw(BigDecimal withdrawAmount) {
+        if (currentAmount.compareTo(withdrawAmount) >= 0) {
+            currentAmount = currentAmount.subtract(withdrawAmount);
+        }
     }
 
     public long getId() {
