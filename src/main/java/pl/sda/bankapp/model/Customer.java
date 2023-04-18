@@ -12,12 +12,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Data
-@Builder
 @NoArgsConstructor
-@AllArgsConstructor
 public class Customer {
 
     private long id;
+    private int age;
     private String name;
     private String surname;
     private String phone;
@@ -26,9 +25,20 @@ public class Customer {
     private Address address;
     private LocalDate dateOfBirth;
     private final List<Account> accounts = new ArrayList<>();
-    private final int age = Period.between(dateOfBirth, LocalDate.now()).getYears();
 
-//    private int calculateAge() {
+    public Customer(String name, String surname, String phone,
+                    String email, String pesel, Address address, LocalDate dateOfBirth) {
+        this.name = name;
+        this.surname = surname;
+        this.phone = phone;
+        this.email = email;
+        this.pesel = pesel;
+        this.address = address;
+        this.dateOfBirth = dateOfBirth;
+        this.age = Period.between(dateOfBirth, LocalDate.now()).getYears();
+    }
+
+    //    private int calculateAge() {
 //        LocalDate now = LocalDate.now();
 //        int years = now.getYear() - dateOfBirth.getYear();
 //        int month = now.getMonthValue() - dateOfBirth.getMonthValue();
