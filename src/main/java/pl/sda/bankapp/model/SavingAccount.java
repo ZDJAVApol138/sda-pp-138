@@ -13,8 +13,8 @@ public class SavingAccount extends Account {
     @Getter
     private final BigDecimal interestRate = BigDecimal.valueOf(0.08);
 
-    public SavingAccount(long id, long customerId, Currency currency) {
-        super(id, customerId, currency, AccountType.SAVING);
+    public SavingAccount(Currency currency) {
+        super(currency, AccountType.SAVING);
     }
 
     @Override
