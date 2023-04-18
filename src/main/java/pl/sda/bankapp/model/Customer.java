@@ -1,6 +1,10 @@
 package pl.sda.bankapp.model;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import pl.sda.bankapp.exception.NotFoundException;
 
 import java.time.LocalDate;
 import java.time.Period;
@@ -52,5 +56,12 @@ public class Customer {
 //        }
 
         accounts.forEach(System.out::println);
+    }
+
+    public Account getAccount(String accountNumber) {
+        return accounts.stream()
+                .filter(account -> account.getAccountNumber().equals(accountNumber))
+                .findFirst()
+                .orElseThrow(() -> new NotFoundException("Account not found!"));
     }
 }
