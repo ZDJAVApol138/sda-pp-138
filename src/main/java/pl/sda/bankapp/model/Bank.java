@@ -1,21 +1,19 @@
 package pl.sda.bankapp.model;
 
 
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import pl.sda.bankapp.exception.NotFoundException;
 
 import java.util.ArrayList;
 import java.util.List;
 
-
+@Getter
+@RequiredArgsConstructor
 public class Bank {
 
     private final String name;
-    private final List<Customer> customers;
-
-    public Bank(String name) {
-        this.name = name;
-        this.customers = new ArrayList<>();
-    }
+    private final List<Customer> customers = new ArrayList<>();
 
     public void listCustomer() {
         customers.forEach(System.out::println);
@@ -39,13 +37,5 @@ public class Bank {
                                 "Customer with pesel '%s' does not exist!".formatted(pesel)
                         )
                 );
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public List<Customer> getCustomers() {
-        return customers;
     }
 }
