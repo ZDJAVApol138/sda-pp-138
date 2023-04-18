@@ -1,7 +1,6 @@
 package pl.sda.bankapp.model;
 
 import lombok.Getter;
-import lombok.Setter;
 import pl.sda.bankapp.enums.AccountType;
 import pl.sda.bankapp.enums.Currency;
 
@@ -12,8 +11,7 @@ public class SavingAccount extends Account {
     private static final int MONTHLY_FEE = 3;
 
     @Getter
-    @Setter
-    private BigDecimal interestRate;
+    private final BigDecimal interestRate = BigDecimal.valueOf(0.08);
 
     public SavingAccount(long id, long customerId, Currency currency) {
         super(id, customerId, currency, AccountType.SAVING);
