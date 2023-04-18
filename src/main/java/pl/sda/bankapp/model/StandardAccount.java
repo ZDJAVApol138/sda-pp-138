@@ -9,8 +9,8 @@ public class StandardAccount extends Account {
 
     private static final int MONTHLY_FEE = 5;
 
-    public StandardAccount(long id, long customerId, Currency currency) {
-        super(id, customerId, currency, AccountType.STANDARD);
+    public StandardAccount(Currency currency) {
+        super(currency, AccountType.STANDARD);
     }
 
     @Override
