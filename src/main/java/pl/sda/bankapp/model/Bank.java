@@ -15,7 +15,7 @@ public class Bank {
     private final String name;
     private final List<Customer> customers = new ArrayList<>();
 
-    public void listCustomer() {
+    public void listCustomers() {
         customers.forEach(System.out::println);
     }
 

@@ -26,7 +26,7 @@ public class BankService {
             return;
         }
         System.out.println("Customers list: ");
-        bank.listCustomer();
+        bank.listCustomers();
     }
 
     public void listCustomerAccounts() {
