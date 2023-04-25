@@ -1,10 +1,12 @@
 package pl.sda.bankapp.model;
 
+import lombok.NoArgsConstructor;
 import pl.sda.bankapp.enums.AccountType;
 import pl.sda.bankapp.enums.Currency;
 
 import java.math.BigDecimal;
 
+@NoArgsConstructor
 public class PremiumAccount extends Account {
 
     private static final int MONTHLY_FEE = 10;

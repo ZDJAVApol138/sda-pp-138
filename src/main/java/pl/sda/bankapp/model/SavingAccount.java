@@ -1,11 +1,13 @@
 package pl.sda.bankapp.model;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import pl.sda.bankapp.enums.AccountType;
 import pl.sda.bankapp.enums.Currency;
 
 import java.math.BigDecimal;
 
+@NoArgsConstructor
 public class SavingAccount extends Account {
 
     private static final int MONTHLY_FEE = 3;

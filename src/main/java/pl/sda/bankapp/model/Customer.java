@@ -5,17 +5,20 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import pl.sda.bankapp.exception.NotFoundException;
+import pl.sda.bankapp.mapper.CSVMapper;
 
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Data
+@Builder
 @NoArgsConstructor
+@AllArgsConstructor
 public class Customer {
 
-    private long id;
     private int age;
     private String name;
     private String surname;
@@ -24,7 +27,10 @@ public class Customer {
     private String pesel;
     private Address address;
     private LocalDate dateOfBirth;
-    private final List<Account> accounts = new ArrayList<>();
+    private UUID id = UUID.randomUUID();
+
+    @Builder.Default
+    private List<Account> accounts = new ArrayList<>();
 
     public Customer(String name, String surname, String phone,
                     String email, String pesel, Address address, LocalDate dateOfBirth) {
@@ -35,6 +41,7 @@ public class Customer {
         this.pesel = pesel;
         this.address = address;
         this.dateOfBirth = dateOfBirth;
+        this.accounts = new ArrayList<>();
         this.age = Period.between(dateOfBirth, LocalDate.now()).getYears();
     }
 
@@ -73,5 +80,12 @@ public class Customer {
                 .filter(account -> account.getAccountNumber().equals(accountNumber))
                 .findFirst()
                 .orElseThrow(() -> new NotFoundException("Account not found!"));
+    }
+
+    public String toCsv() {
+        return String.join(CSVMapper.DELIMITER, List.of(
+                String.valueOf(id), name, surname, phone, email, pesel, String.valueOf(age), dateOfBirth.toString(),
+                address.getCity(), address.getStreet(), address.getPostCode())
+        );
     }
 }
